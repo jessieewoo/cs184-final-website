@@ -1,136 +1,218 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Milestone — CS184 Smoke Simulator</title>
-  <link rel="stylesheet" href="styles.css" />
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Milestone — CS184 Smoke Simulator</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <nav>
+      <a class="nav-brand" href="index.html">CS184 Smoke Simulator</a>
+      <a href="index.html">Home</a>
+      <a href="proposal.html">Proposal</a>
+      <a href="milestone.html" class="active">Milestone</a>
+    </nav>
 
-<nav>
-  <a class="nav-brand" href="index.html">CS184 Smoke Simulator</a>
-  <a href="index.html">Home</a>
-  <a href="proposal.html">Proposal</a>
-  <a href="milestone.html" class="active">Milestone</a>
-</nav>
+    <div class="container">
+      <h1>Milestone Update</h1>
 
-<div class="container">
-
-  <h1>Interactive Smoke Simulator</h1>
-  <p class="subtitle">
-    CS184 Final Project &mdash; Milestone Report &nbsp;|&nbsp; April 20, 2026<br>
-    Jessie Liu &middot; Nada Hameed &middot; Sarthak Agrawal &middot; Luca Herden
-  </p>
-  <p class="links">
-    Milestone Video: <a href="https://drive.google.com/file/d/1POEKrWao8loGKEcdSOm_CSZdH8MxDZ2D/view?usp=sharing" target="_blank"> https://drive.google.com/file/d/1POEKrWao8loGKEcdSOm_CSZdH8MxDZ2D/view?usp=sharing</a>
-    <br/><br/>
-    Presentation Slides: <a href="https://docs.google.com/presentation/d/1yZtnRk44ulo9vRAWXGMbd8kFBz6oDdyeYkIjZIUF-go/edit?usp=sharing" target="_blank"> https://docs.google.com/presentation/d/1yZtnRk44ulo9vRAWXGMbd8kFBz6oDdyeYkIjZIUF-go/edit?usp=sharing</a>
+      <p class="subtitle">
+        CS184 Final Project &mdash; Milestone Report &nbsp;|&nbsp; April 20,
+        2026<br />
+        Jessie Liu &middot; Nada Hameed &middot; Sarthak Agrawal &middot; Luca
+        Herden
+      </p>
+      <p class="links">
+        Milestone Video:
+        <a
+          href="https://drive.google.com/file/d/1POEKrWao8loGKEcdSOm_CSZdH8MxDZ2D/view?usp=sharing"
+          target="_blank"
+        >
+          https://drive.google.com/file/d/1POEKrWao8loGKEcdSOm_CSZdH8MxDZ2D/view?usp=sharing</a
+        >
+        <br /><br />
+        Presentation Slides:
+        <a
+          href="https://docs.google.com/presentation/d/1yZtnRk44ulo9vRAWXGMbd8kFBz6oDdyeYkIjZIUF-go/edit?usp=sharing"
+          target="_blank"
+        >
+          https://docs.google.com/presentation/d/1yZtnRk44ulo9vRAWXGMbd8kFBz6oDdyeYkIjZIUF-go/edit?usp=sharing</a
+        >
         <!-- <br/><br/> -->
-    <!-- Github Repo: <a href="https://docs.google.com/presentation/d/1yZtnRk44ulo9vRAWXGMbd8kFBz6oDdyeYkIjZIUF-go/edit?usp=sharing" target="_blank"> https://docs.google.com/presentation/d/1yZtnRk44ulo9vRAWXGMbd8kFBz6oDdyeYkIjZIUF-go/edit?usp=sharing</a> -->
+        <!-- Github Repo: <a href="https://docs.google.com/presentation/d/1yZtnRk44ulo9vRAWXGMbd8kFBz6oDdyeYkIjZIUF-go/edit?usp=sharing" target="_blank"> https://docs.google.com/presentation/d/1yZtnRk44ulo9vRAWXGMbd8kFBz6oDdyeYkIjZIUF-go/edit?usp=sharing</a> -->
+      </p>
+      <section>
+        <h2>Milestone Video & Image</h2>
+              <img src="/cs184.png" alt="screenshot of smoke simulator" width="640">
+        <iframe
+          src="https://drive.google.com/file/d/1POEKrWao8loGKEcdSOm_CSZdH8MxDZ2D/preview"
+          width="640"
+          height="360"
+          allow="autoplay"
+        >
+        </iframe>
+      </section>
 
-  </p>
+      <section>
+        <h2>Accomplishments</h2>
+        <p>
+          We have a fully working interactive smoke simulator running in real
+          time on the GPU. All four core systems are implemented and integrated:
+        </p>
+        <ul>
+          <li>
+            <strong>Fluid simulation</strong> — Jos Stam's Stable Fluids solver
+            (advection, diffusion, pressure projection) runs at 90 fps on a
+            128&times;128 grid.
+          </li>
+          <li>
+            <strong>Letter mask</strong> — "CS184" is rasterized from 5&times;7
+            pixel-font glyphs scaled to grid cells. Smoke is continuously
+            emitted from these cells, forming the letters.
+          </li>
+          <li>
+            <strong>Rendering</strong> — A fullscreen quad shader maps the
+            density field to a blue-grey smoke color with a smooth tone curve on
+            a dark background.
+          </li>
+          <li>
+            <strong>Mouse wind</strong> — Moving the mouse injects a velocity
+            impulse into the fluid grid in a small radius around the cursor,
+            visibly pushing the smoke. Buoyancy makes smoke rise naturally; a
+            global decay rate fades displaced smoke so the letters gradually
+            re-form.
+          </li>
+          <li>
+            <strong>GUI controls</strong> — Live sliders for emit rate, wind
+            strength, buoyancy, and decay rate. Keyboard shortcuts:
+            P&nbsp;pause, R&nbsp;reset, W&nbsp;toggle wind, ESC&nbsp;quit.
+          </li>
+        </ul>
+      </section>
 
-  <section>
-    <h2>Accomplishments</h2>
-    <p>
-      We have a fully working interactive smoke simulator running in real time on the GPU.
-      All four core systems are implemented and integrated:
-    </p>
-    <ul>
-      <li><strong>Fluid simulation</strong> — Jos Stam's Stable Fluids solver (advection,
-          diffusion, pressure projection) runs at 90 fps on a 128&times;128 grid.</li>
-      <li><strong>Letter mask</strong> — "CS184" is rasterized from 5&times;7 pixel-font
-          glyphs scaled to grid cells. Smoke is continuously emitted from these cells,
-          forming the letters.</li>
-      <li><strong>Rendering</strong> — A fullscreen quad shader maps the density field to a
-          blue-grey smoke color with a smooth tone curve on a dark background.</li>
-      <li><strong>Mouse wind</strong> — Moving the mouse injects a velocity impulse into the
-          fluid grid in a small radius around the cursor, visibly pushing the smoke.
-          Buoyancy makes smoke rise naturally; a global decay rate fades displaced smoke
-          so the letters gradually re-form.</li>
-      <li><strong>GUI controls</strong> — Live sliders for emit rate, wind strength, buoyancy,
-          and decay rate. Keyboard shortcuts: P&nbsp;pause, R&nbsp;reset, W&nbsp;toggle wind,
-          ESC&nbsp;quit.</li>
-    </ul>
-  </section>
+      <section>
+        <h2>Preliminary Results</h2>
+        <p>
+          On launch, "CS184" appears as white smoke columns rising from
+          letter-shaped emitters against a dark background. Moving the mouse
+          through the letters scatters the smoke; once the cursor moves away,
+          the letters gradually re-form as new smoke is emitted and residual
+          displaced smoke decays. The effect is clearly readable as interactive
+          smoke typography running at smooth, real-time frame rates.
+        </p>
+        <p>
+          Parameter values that produce strong results: emit rate&nbsp;50,
+          decay&nbsp;0.01, buoyancy&nbsp;0.5, viscosity&nbsp;0. At these
+          settings the letters remain legible while the smoke still drifts
+          naturally upward.
+        </p>
+      </section>
 
-  <section>
-    <h2>Preliminary Results</h2>
-    <p>
-      On launch, "CS184" appears as white smoke columns rising from letter-shaped emitters
-      against a dark background. Moving the mouse through the letters scatters the smoke;
-      once the cursor moves away, the letters gradually re-form as new smoke is emitted and
-      residual displaced smoke decays. The effect is clearly readable as interactive smoke
-      typography running at smooth, real-time frame rates.
-    </p>
-    <p>
-      Parameter values that produce strong results: emit rate&nbsp;50, decay&nbsp;0.01,
-      buoyancy&nbsp;0.5, viscosity&nbsp;0. At these settings the letters remain legible
-      while the smoke still drifts naturally upward.
-    </p>
-  </section>
+      <section>
+        <h2>Progress Relative to Plan</h2>
+        <p>
+          We are ahead of schedule. Our original plan targeted a working fluid
+          step and visible smoke by late April, with readable "CS184" and
+          recovery as the final milestone goal. We have already reached and
+          exceeded that bar.
+        </p>
+        <table>
+          <tr>
+            <th>Goal</th>
+            <th>Status</th>
+          </tr>
+          <tr>
+            <td>Repo set up, builds cleanly</td>
+            <td class="done">&#10003; Done</td>
+          </tr>
+          <tr>
+            <td>Smoke shader renders density texture</td>
+            <td class="done">&#10003; Done</td>
+          </tr>
+          <tr>
+            <td>SmokeSimulator app framework</td>
+            <td class="done">&#10003; Done</td>
+          </tr>
+          <tr>
+            <td>"CS184" letter mask as emitter cells</td>
+            <td class="done">&#10003; Done</td>
+          </tr>
+          <tr>
+            <td>Real Stam fluid step (advect + diffuse + project)</td>
+            <td class="done">&#10003; Done</td>
+          </tr>
+          <tr>
+            <td>Mouse wind injects velocity into grid</td>
+            <td class="done">&#10003; Done</td>
+          </tr>
+          <tr>
+            <td>GUI sliders, stable 90 fps</td>
+            <td class="done">&#10003; Done</td>
+          </tr>
+          <tr>
+            <td>"CS184" forms and recovers after wind disturbance</td>
+            <td class="done">&#10003; Done</td>
+          </tr>
+          <tr>
+            <td>Rendering polish (glow, color tuning)</td>
+            <td class="pending">In progress</td>
+          </tr>
+          <tr>
+            <td>Multiple target shapes / transitions</td>
+            <td class="pending">Upcoming</td>
+          </tr>
+          <tr>
+            <td>Demo video &amp; final report</td>
+            <td class="pending">Upcoming</td>
+          </tr>
+        </table>
+      </section>
 
-  <section>
-    <h2>Progress Relative to Plan</h2>
-    <p>
-      We are ahead of schedule. Our original plan targeted a working fluid step and visible
-      smoke by late April, with readable "CS184" and recovery as the final milestone goal.
-      We have already reached and exceeded that bar.
-    </p>
-    <table>
-      <tr><th>Goal</th><th>Status</th></tr>
-      <tr><td>Repo set up, builds cleanly</td><td class="done">&#10003; Done</td></tr>
-      <tr><td>Smoke shader renders density texture</td><td class="done">&#10003; Done</td></tr>
-      <tr><td>SmokeSimulator app framework</td><td class="done">&#10003; Done</td></tr>
-      <tr><td>"CS184" letter mask as emitter cells</td><td class="done">&#10003; Done</td></tr>
-      <tr><td>Real Stam fluid step (advect + diffuse + project)</td><td class="done">&#10003; Done</td></tr>
-      <tr><td>Mouse wind injects velocity into grid</td><td class="done">&#10003; Done</td></tr>
-      <tr><td>GUI sliders, stable 90 fps</td><td class="done">&#10003; Done</td></tr>
-      <tr><td>"CS184" forms and recovers after wind disturbance</td><td class="done">&#10003; Done</td></tr>
-      <tr><td>Rendering polish (glow, color tuning)</td><td class="pending">In progress</td></tr>
-      <tr><td>Multiple target shapes / transitions</td><td class="pending">Upcoming</td></tr>
-      <tr><td>Demo video &amp; final report</td><td class="pending">Upcoming</td></tr>
-    </table>
-  </section>
-
-  <section>
-    <h2>Updated Work Plan</h2>
-    <p>With the core simulator complete well before the milestone deadline, our remaining
-    effort through <strong>May 4, 2026</strong> focuses on visual quality, additional features,
-    and final deliverables:</p>
-    <table>
-      <tr><th>Week</th><th>Tasks</th></tr>
-      <tr>
-        <td><strong>Apr 21&ndash;27</strong></td>
-        <td>
-          Rendering polish: add glow/bloom pass in fragment shader; experiment with colored
-          smoke (warm embers, cool wisps). Tune default parameters for best visual impression.
-        </td>
-      </tr>
-      <tr>
-        <td><strong>Apr 28&ndash;May 1</strong></td>
-        <td>
-          Multiple target shapes: press 1/2/3 to switch emitter mask between "CS184",
-          a Berkeley bear, and a custom logo. Animate the transition smoothly.
-          Evaluate stretch goal: 3D voxel grid extension vs. 2D performance comparison.
-        </td>
-      </tr>
-      <tr>
-        <td><strong>May 2&ndash;4</strong></td>
-        <td>
-          Record 1&ndash;2 min final demo video (all members speaking). Write final report
-          webpage. Prepare 5-min presentation slides. Submit all deliverables by
-          <strong>May 4, 2026 at 11:59 PM</strong>.
-        </td>
-      </tr>
-      <tr>
-        <td><strong>May 5</strong></td>
-        <td>Final presentations. Submit peer review form.</td>
-      </tr>
-    </table>
-  </section>
-
-</div>
-</body>
+      <section>
+        <h2>Updated Work Plan</h2>
+        <p>
+          With the core simulator complete well before the milestone deadline,
+          our remaining effort through <strong>May 4, 2026</strong> focuses on
+          visual quality, additional features, and final deliverables:
+        </p>
+        <table>
+          <tr>
+            <th>Week</th>
+            <th>Tasks</th>
+          </tr>
+          <tr>
+            <td><strong>Apr 21&ndash;27</strong></td>
+            <td>
+              Rendering polish: add glow/bloom pass in fragment shader;
+              experiment with colored smoke (warm embers, cool wisps). Tune
+              default parameters for best visual impression.
+            </td>
+          </tr>
+          <tr>
+            <td><strong>Apr 28&ndash;May 1</strong></td>
+            <td>
+              Multiple target shapes: press 1/2/3 to switch emitter mask between
+              "CS184", a Berkeley bear, and a custom logo. Animate the
+              transition smoothly. Evaluate stretch goal: 3D voxel grid
+              extension vs. 2D performance comparison.
+            </td>
+          </tr>
+          <tr>
+            <td><strong>May 2&ndash;4</strong></td>
+            <td>
+              Record 1&ndash;2 min final demo video (all members speaking).
+              Write final report webpage. Prepare 5-min presentation slides.
+              Submit all deliverables by
+              <strong>May 4, 2026 at 11:59 PM</strong>.
+            </td>
+          </tr>
+          <tr>
+            <td><strong>May 5</strong></td>
+            <td>Final presentations. Submit peer review form.</td>
+          </tr>
+        </table>
+      </section>
+    </div>
+  </body>
 </html>

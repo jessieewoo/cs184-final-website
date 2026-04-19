@@ -12,36 +12,60 @@ body {
   background-color: #fff;
 }
 
+/* ── Navbar ── */
+nav {
+  background: #1a1a1a;
+  padding: 0 40px;
+  display: flex;
+  align-items: center;
+  gap: 0;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+nav .nav-brand {
+  color: #fff;
+  font-size: 0.95rem;
+  font-weight: bold;
+  text-decoration: none;
+  padding: 16px 0;
+  margin-right: 32px;
+  white-space: nowrap;
+}
+
+nav a {
+  color: #ccc;
+  text-decoration: none;
+  font-size: 0.9rem;
+  padding: 16px 14px;
+  transition: color 0.15s;
+}
+
+nav a:hover,
+nav a.active {
+  color: #fff;
+  text-decoration: none;
+}
+
+/* ── Container ── */
 .container {
-  max-width: 50%;
+  max-width: 860px;
   margin: 60px auto;
   padding: 0 40px;
 }
 
+/* ── Typography ── */
 h1 {
   font-size: 2.2rem;
   font-weight: bold;
-  margin-bottom: 8px;
-}
-
-.website-link {
-  margin-bottom: 40px;
-  font-size: 0.95rem;
-  color: #444;
-}
-
-.website-link a {
-  color: #1a73e8;
-}
-
-section {
-  margin-bottom: 48px;
+  margin-bottom: 6px;
 }
 
 h2 {
-  font-size: 1.5rem;
+  font-size: 1.4rem;
   font-weight: bold;
-  margin-bottom: 16px;
+  margin-bottom: 14px;
   padding-bottom: 6px;
   border-bottom: 2px solid #ddd;
 }
@@ -49,21 +73,20 @@ h2 {
 h3 {
   font-size: 1.1rem;
   font-weight: bold;
-  text-decoration: underline;
   margin-top: 24px;
   margin-bottom: 10px;
 }
 
 p {
-  margin-bottom: 14px;
+  margin-bottom: 12px;
 }
 
 ul {
-  margin: 0 0 14px 28px;
+  margin: 0 0 12px 28px;
 }
 
 ul li {
-  margin-bottom: 6px;
+  margin-bottom: 5px;
 }
 
 a {
@@ -75,6 +98,63 @@ a:hover {
   text-decoration: underline;
 }
 
+section {
+  margin-bottom: 44px;
+}
+
+/* ── Subtitle & links (milestone-style header) ── */
+.subtitle {
+  font-size: 1rem;
+  color: #555;
+  margin-bottom: 8px;
+}
+
+.links {
+  margin-bottom: 40px;
+  font-size: 0.95rem;
+}
+
+.links a {
+  color: #1a73e8;
+  text-decoration: none;
+  margin-right: 20px;
+}
+
+.links a:hover {
+  text-decoration: underline;
+}
+
+/* ── Tables ── */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+  font-size: 0.95rem;
+}
+
+th {
+  background: #f4f4f4;
+  text-align: left;
+  padding: 8px 12px;
+  border: 1px solid #ddd;
+}
+
+td {
+  padding: 7px 12px;
+  border: 1px solid #ddd;
+  vertical-align: top;
+}
+
+.done {
+  color: #2a7a2a;
+  font-weight: bold;
+}
+
+.pending {
+  color: #b85c00;
+}
+
+/* ── Schedule weeks ── */
 .week {
   margin-bottom: 28px;
 }
@@ -84,4 +164,54 @@ a:hover {
   font-size: 1rem;
   font-weight: bold;
   margin-bottom: 8px;
+  margin-top: 0;
+}
+
+/* ── Home page cards ── */
+.home-hero {
+  margin-bottom: 52px;
+}
+
+.home-hero .subtitle {
+  margin-bottom: 20px;
+}
+
+.home-hero .links {
+  margin-bottom: 0;
+}
+
+.page-cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin-top: 40px;
+}
+
+.card {
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  padding: 28px 28px 24px;
+  text-decoration: none;
+  color: inherit;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+.card:hover {
+  border-color: #1a73e8;
+  box-shadow: 0 2px 10px rgba(26, 115, 232, 0.1);
+  text-decoration: none;
+}
+
+.card h2 {
+  border-bottom: none;
+  font-size: 1.15rem;
+  margin-bottom: 8px;
+  padding-bottom: 0;
+  color: #1a73e8;
+}
+
+.card p {
+  font-size: 0.95rem;
+  color: #555;
+  margin-bottom: 0;
 }

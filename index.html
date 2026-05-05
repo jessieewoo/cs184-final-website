@@ -1,61 +1,85 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>CS184 — Interactive Smoke Simulator</title>
-  <link rel="stylesheet" href="styles.css" />
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CS184 — Interactive Smoke Simulator</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <nav>
+      <a class="nav-brand" href="index.html">CS184 Smoke Simulator</a>
+      <a href="index.html" class="active">Home</a>
+      <a href="proposal.html">Proposal</a>
+      <a href="milestone.html">Milestone</a>
+      <a href="final.html">Final</a>
+    </nav>
 
-<nav>
-  <a class="nav-brand" href="index.html">CS184 Smoke Simulator</a>
-  <a href="index.html" class="active">Home</a>
-  <a href="proposal.html">Proposal</a>
-  <a href="milestone.html">Milestone</a>
-</nav>
-
-<div class="container">
-  <div class="home-hero">
-    <h1>Interactive Smoke Simulator</h1>
-    <img src="/cs184.png" alt="screenshot of smoke simulator" width="640">
-    <p class="subtitle">
-      CS184 Final Project &mdash; Spring 2026<br>
-      Jessie Liu &middot; Nada Hameed &middot; Sarthak Agrawal &middot; Luca Herden
-    </p>
-    <!-- <p class="links">
+    <div class="container">
+      <div class="home-hero">
+        <h1>Interactive Smoke Simulator</h1>
+        <img
+          src="./cs184.png"
+          alt="screenshot of smoke simulator"
+          width="640"
+        />
+        <p class="subtitle">
+          CS184 Final Project &mdash; Spring 2026<br />
+          Jessie Liu &middot; Nada Hameed &middot; Sarthak Agrawal &middot; Luca
+          Herden
+        </p>
+        <!-- <p class="links">
       <a href="https://drive.google.com/file/d/1POEKrWao8loGKEcdSOm_CSZdH8MxDZ2D/view?usp=sharing" target="_blank">&#9654; Milestone Video</a>
       <a href="YOUR_SLIDES_LINK_HERE" target="_blank">&#128196; Presentation Slides</a>
     </p> -->
-  </div>
+      </div>
 
-  <section>
-    <h2>Project Overview</h2>
-    <p>
-      We are building an interactive smoke simulation system where smoke forms letters and shapes,
-      reacts to user-controlled wind disturbances, and gradually recovers its original formation.
-      Our baseline is a 2D GPU-accelerated smoke simulator using Jos Stam's Stable Fluids solver,
-      with a stretch goal of extending the same system into 3D.
-    </p>
-    <p>
-      The simulator currently runs in real time at 90 fps on a 128&times;128 grid. Smoke is
-      emitted from letter-shaped masks ("CS184"), mouse movement injects wind, and buoyancy
-      causes smoke to rise naturally. Live GUI sliders control emit rate, wind strength, buoyancy,
-      and decay.
-    </p>
-  </section>
+      <section>
+        <h2>Project Overview</h2>
+        <p>
+          We built an interactive smoke simulator where smoke forms letters and
+          shapes, reacts to user-controlled wind disturbances, and gradually
+          recovers its original formation. The simulator is built on Jos Stam's
+          Stable Fluids method and supports both 2D and 3D rendering modes.
+        </p>
+        <p>
+          Smoke can emit from hardcoded cell patterns, typed text, or an
+          imported image. The simulator offers three modes: a 2D fluid
+          simulation, a 3D analytic mode (wind computed from a sine/cosine
+          formula with ray-marched volume rendering), and a full 3D fluid mode
+          (Navier-Stokes solved on an N&sup3; grid each frame). Toggle '3'
+          switches between 2D and 3D; toggle 's' switches between the two 3D
+          modes.
+        </p>
+        <p>
+          Live GUI sliders control emit rate, buoyancy, decay rate, color, and
+          cursor wind strength. In 2D, mouse movement injects velocity directly
+          into the fluid grid; in 3D, the mouse controls the camera.
+        </p>
+      </section>
 
-  <div class="page-cards">
-    <a class="card" href="proposal.html">
-      <h2>Final Proposal &rarr;</h2>
-      <p>Project scope, problem description, goals, schedule, and resources.</p>
-    </a>
-    <a class="card" href="milestone.html">
-      <h2>Milestone Report &rarr;</h2>
-      <p>Progress update, preliminary results, and updated work plan through May 4.</p>
-    </a>
-  </div>
-</div>
-
-</body>
+      <div class="page-cards">
+        <a class="card" href="proposal.html">
+          <h2>Final Proposal &rarr;</h2>
+          <p>
+            Project scope, problem description, goals, schedule, and resources.
+          </p>
+        </a>
+        <a class="card" href="milestone.html">
+          <h2>Milestone Report &rarr;</h2>
+          <p>
+            Progress update, preliminary results, and updated work plan through
+            May 4.
+          </p>
+        </a>
+        <a class="card" href="final.html">
+          <h2>Final Report &rarr;</h2>
+          <p>
+            Full technical writeup, results, and contributions for the completed
+            simulator.
+          </p>
+        </a>
+      </div>
+    </div>
+  </body>
 </html>
